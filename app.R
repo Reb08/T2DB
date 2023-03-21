@@ -199,14 +199,14 @@ server <- function(input, output, session) {
     }
   })
   
-  source(file.path("server", "mainTable.R"), local=TRUE)$value
-  source(file.path("server","summaryTable.R"), local=TRUE)$value
-  source(file.path("server","volcanoPlot.R"), local=TRUE)$value
-  source(file.path("server","heatmap.R"), local=TRUE)$value
-  source(file.path("server","GOanalysis.R"), local=TRUE)$value
-  source(file.path("server","keggPlot.R"), local=TRUE)$value
-  source(file.path("server","upsetPlot.R"), local=TRUE)$value
-  source(file.path("server","downloadTable.R"), local=TRUE)$value
+  source(file.path("mainTable.R"), local=TRUE)$value
+  source(file.path("summaryTable.R"), local=TRUE)$value
+  source(file.path("volcanoPlot.R"), local=TRUE)$value
+  source(file.path("heatmap.R"), local=TRUE)$value
+  source(file.path("GOanalysis.R"), local=TRUE)$value
+  source(file.path("keggPlot.R"), local=TRUE)$value
+  source(file.path("upsetPlot.R"), local=TRUE)$value
+  source(file.path("downloadTable.R"), local=TRUE)$value
   
 }
 
