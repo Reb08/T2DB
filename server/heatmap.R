@@ -41,59 +41,6 @@ selected_df <- reactive({
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-# creates list with all the dataframe (which contain read counts) I will be using for the plot (depending on selected study and comparison)
-# data_list <- list(GSE164414_IGT_CTRL, GSE164414_IGT_T2D, GSE164414_IGT_T3cD, GSE164414_T2D_CTRL, GSE164414_T3cD_CTRL, GSE164414_T3cD_T2D,
-#                   GSE115601_DG_CTRL, GSE115601_DC_CTRL, GSE115601_DG_DC, GSE115601_IG_CTRL, GSE115601_IG_DG, GSE115601_IG_DC, 
-#                  GSE175988_CTRL_LPS_CTRL_U, GSE175988_D_LPS_CTRL_LPS, GSE175988_D_LPS_CTRL_U, GSE175988_D_LPS_D_U, GSE175988_D_U_CTRL_LPS, GSE175988_D_U_CTRL_U)
-# 
-# 
-# # select correct dataframe to use for plot based on selected study and comparison 
-# df_index <- reactive({
-#   
-#   req(input$study, input$comparison)
-#   
-#   default_study <- "GSE164416"
-#   default_comparison <- "IGT vs Control"
-#   
-#   switch(paste(input$study, input$comparison, sep = "_"),
-#          "GSE164416_IGT vs Control" = 1,
-#          "GSE164416_IGT vs T2D" = 2,
-#          "GSE164416_IGT vs T3cD" = 3,
-#          "GSE164416_T2D vs Control" = 4,
-#          "GSE164416_T3cD vs Control" = 5,
-#          "GSE164416_T3cD vs T2D" = 6,
-#          "GSE115601_Diabetic_Gastroparetics vs Control" = 7,
-#          "GSE115601_Diabetic_Non-Gastroparetics vs Control" = 8,
-#          "GSE115601_Diabetic_Gastroparetics vs Diabetic_Non-Gastroparetics" = 9,
-#          "GSE115601_Idiopathic_Gastroparetics vs Control" = 10,
-#          "GSE115601_Idiopathic_Gastroparetics vs Diabetic_Gastroparetics" = 11,
-#          "GSE115601_Idiopathic_Gastroparetics vs Diabetic_Non-Gastroparetics" = 12,
-#          "GSE175988_Control_LPS vs Control_Unstimulated" = 13,
-#          "GSE175988_Diabetic_LPS vs Control_LPS" = 14,
-#          "GSE175988_Diabetic_LPS vs Control_Unstimulated" = 15,
-#          "GSE175988_Diabetic_LPS vs Diabetic_Unstimulated" = 16,
-#          "GSE175988_Diabetic_Unstimulated vs Control_LPS" = 17,
-#          "GSE175988_Diabetic_Unstimulated vs Control_Unstimulated" = 18)
-# })
-# 
-# 
-# selected_df <- reactive({
-#   data_list[[df_index()]]
-# })
-
-
 # add column indicating whether the gene is an up- or down- regulated protein-coding gene or lncRNA
 selected_df_mutated <- reactive({
   Sign <- case_when(
@@ -110,6 +57,7 @@ selected_df_mutated <- reactive({
 # filter data to have only DEGs
 heatmap_data <- reactive({
   filtered_data <- filter(selected_df_mutated(), Significance!="Unchanged")
+  on.exit(rm(filtered_data))
   return(filtered_data)
 })  
 
@@ -117,10 +65,14 @@ heatmap_data <- reactive({
 # further subset data based on whether user chooses to display protein-coding genes or lncRNAs genes
 heatmap_data_subset <- reactive({
   if(input$gene_type2 == "lncRNA genes"){
-    heatmap_data()[heatmap_data()$Biotype=="lncRNA",]
+    data <- heatmap_data()[heatmap_data()$Biotype=="lncRNA",]
   } else {
-    heatmap_data()[heatmap_data()$Biotype=="protein_coding",]
+    data <- heatmap_data()[heatmap_data()$Biotype=="protein_coding",]
   }
+  
+  on.exit(rm(data))
+  
+  return(data)
 })
 
 # plot heatmap while catching errors that appear when there are no enough DEGs 
