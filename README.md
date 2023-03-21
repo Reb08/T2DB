@@ -22,4 +22,4 @@ To generate the data for this app, please see the steps in https://github.com/he
  
  ## Visit the app online
  
- You can find the app online at: (---INSERT LINK---)
+ You can find the app online at:  https://rebeccadistefano.shinyapps.io/T2DB/
