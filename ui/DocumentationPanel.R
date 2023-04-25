@@ -12,7 +12,7 @@ tabPanel(title=list(icon("circle-info"),"Documentation"),
                              p("2023-03-22"),
                              p(strong("T2DB"), "is a web database for", strong("accessing and exploring expression data of protein-coding and lncRNA genes in T2D patients."),
                                "The data for this database was derived from three studies profiled by", em("Distefano et al., 2023."),
-                               strong("T2DB"), "is the work of the ", tags$a(href="https://heartlncrna.github.io/", "Unchida laboratory,"), "Center for RNA Medicine, Aalborg University, and the ", tags$a(href="https://www.bioresnet.org/", "Bioinformatic Reaserch Network.")),
+                               strong("T2DB"), "is the work of the ", tags$a(href="https://heartlncrna.github.io/", "Uchida laboratory,"), "Center for RNA Medicine, Aalborg University, and the ", tags$a(href="https://www.bioresnet.org/", "Bioinformatic Reaserch Network.")),
                              br(),
                              p("Key features:"),
                              tags$ul(
@@ -101,6 +101,22 @@ tabPanel(title=list(icon("circle-info"),"Documentation"),
                             p(strong("Comparsisons Intersection."), strong("(A)"), "Controls the expression pattern of the DEGs used on (B).", 
                               strong("(B)"), "This interface displays the DEGs shared among the different comparisons of the selected study as an UpSet plot. For more information, see the", tags$a(href="https://upset.app", "Upset plot documentation.")),
                             
+                            
+                            tags$figure(
+                              align="center",
+                              tags$img(
+                                src="lncRNAsPage.png",
+                                width="970",
+                                alt="Picture for the lncRNAs page"
+                              )
+                            ),
+                            
+                            
+                            p(strong("lncRNAs Page."), strong("(A)"), "Controls the study which is displayed.",
+                              strong("(B)"), "Controls the comparison within the study which is displayed.",
+                              strong("(C)"), "'lncRNA Table' which displays the differentially expressed lncRNAs identified in the selected comparison and study with an FDR < 0.05 and logFC > abs(1).",
+                              strong("(D)"), "List of miRNAs and GWAS terms related to the lncRNA selected in the 'lncRNA Table' "),
+                            
                               tags$figure(
                                 align="center",
                                 tags$img(
@@ -109,6 +125,7 @@ tabPanel(title=list(icon("circle-info"),"Documentation"),
                                   alt="Picture for the comparison page"
                                 )
                               ),
+                            
                               
                               p(strong("Download Page."), strong("(A)"), "Controls the study which will be displayed and subsequently downloaded.", 
                                 strong("(B)"), "Controls the type of file used to download the desired data set (either comma-separated-values (CSV) file or tab-separated-values (TSV) file)",
@@ -159,7 +176,7 @@ tabPanel(title=list(icon("circle-info"),"Documentation"),
                     tabPanel("License and attribution",
                              h4("License and Attribution"),
                              p(strong("T2DB"), "is licensed under an MIT license and we ask that you please cite", strong("T2DB"), "in any published work like so:"),
-                             h5(em("'Distefano"), "et. al", em("Systematic Analysis of Long Non-Coding RNA Genes in Type II Dabetes, 2023...'"))
+                             h5(em("'Distefano"), "et. al", em("Systematic Analysis of Long Non-Coding RNA Genes in Type II Dabetes, 2023'"))
                     ) # end tabPanel
                     
                   )), # end navlistPanel and column, repsectively

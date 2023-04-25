@@ -32,8 +32,33 @@ tabPanel(title=list(icon("binoculars"), "Explore"),
                   ),
                   
                   br(),
-                  titlePanel(h3("Result Table")),
-                  helpText("RNA-sequencing analysis results"),
+                  fluidRow(
+                    column(4,
+                           titlePanel(h3("Result Table")),
+                           helpText("RNA-sequencing analysis results")),
+                    column(4,
+                           div(tags$label(), style = "margin-bottom: 5px"),
+                           div(downloadButton('downloadResultTable', 'Download', class = "btn-primary")),
+                           helpText("Download Result Table in .tsv format"),
+                           
+                           tags$script(
+                             "var downloadTimeout;
+           $(document).on('click', '#downloadResultTable', function(){
+             $('#downloadResultTable').removeClass('btn-primary').addClass('btn-success');
+             var timeoutSeconds = input$study == 'GSE154416' ? 38 : 10;
+             downloadTimeout = setTimeout(function(){
+               $('#downloadResultTable').removeClass('btn-success').addClass('btn-primary');
+             }, timeoutSeconds * 1000); // Change the button back to blue after the specified seconds
+           });
+           $(document).ajaxComplete(function(event, xhr, settings) {
+             clearTimeout(downloadTimeout); // Clear the timeout when the download is complete
+             $('#downloadResultTable').removeClass('btn-success').addClass('btn-primary');
+           });
+           ")
+                           
+                           )
+                    
+                  ),
                   fluidRow(
                     column(9,
                            DT::dataTableOutput("table") %>% withSpinner(color="#0dc5c1"))  # main table on the left hand side of Explore Tab

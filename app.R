@@ -85,6 +85,7 @@ ui <- fluidPage(
              
              source(file.path("ui", "HomePanel.R"), local=TRUE)$value,
              source(file.path("ui", "ExplorePanel.R"), local=TRUE)$value,
+             source(file.path("ui", "lncRNAPanel_2.R"), local=TRUE)$value,
              source(file.path("ui", "DownloadPanel.R"), local=TRUE)$value,
              source(file.path("ui", "DocumentationPanel.R"), local=TRUE)$value
              
@@ -158,16 +159,7 @@ server <- function(input, output, session) {
     
     return(df)
   })
-  
-  # allow user to select a row in table
-  selected_row <- reactive({
-    data.frame(Ensembl.Gene.ID = character(),
-               Gene.Symbol = character(),
-               logFC = numeric(),
-               FDR = numeric(),
-               Biotype = character(),
-               Significance = character())
-  })
+
   
   # allow user to select a row in table
   selected_row <- reactive({
@@ -206,8 +198,19 @@ server <- function(input, output, session) {
   source(file.path("server", "GOanalysis.R"), local=TRUE)$value
   source(file.path("server", "keggPlot.R"), local=TRUE)$value
   source(file.path("server", "upsetPlot.R"), local=TRUE)$value
+  source(file.path("server", "lncRNATable2.R"), local=TRUE)$value
   source(file.path("server", "downloadTable.R"), local=TRUE)$value
   
+  # source(file.path("mainTable.R"), local=TRUE)$value
+  # source(file.path("summaryTable.R"), local=TRUE)$value
+  # source(file.path("volcanoPlot.R"), local=TRUE)$value
+  # source(file.path("heatmap.R"), local=TRUE)$value
+  # source(file.path("GOanalysis.R"), local=TRUE)$value
+  # source(file.path("keggPlot.R"), local=TRUE)$value
+  # source(file.path("upsetPlot.R"), local=TRUE)$value
+  # source(file.path("lncRNATable2.R"), local=TRUE)$value
+  # source(file.path("downloadTable.R"), local=TRUE)$value
+  # 
 }
 
 
