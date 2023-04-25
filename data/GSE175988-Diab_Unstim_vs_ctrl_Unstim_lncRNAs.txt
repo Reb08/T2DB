@@ -1,0 +1,2 @@
+Ensembl Gene ID	Gene Symbol	logFC	FDR	Comparison	LncBook ID	Type	Conservation	miRNA	GWAS	nearest PC	Top correlated gene
+ENSG00000289474	ENSG00000289474	6.99459826101905	4.5265366605424e-4	Diabetic_Unstimulated_vs_Control_Unstimulated	HSALNG0019510	anti_sense	Q50	hsa-miR-4448,hsa-miR-4455	-	MMADHC	ENSG00000236209

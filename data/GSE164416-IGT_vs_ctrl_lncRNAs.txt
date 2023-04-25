@@ -1,0 +1,2 @@
+Ensembl Gene ID	Gene Symbol	logFC	FDR	Comparison	LncBook ID	Type	Conservation	miRNA	GWAS	nearest PC	Top correlated gene
+ENSG00000285205	ENSG00000285205	-3.94584886780563	0.00914069163698583	IGT_vs_Control	HSALNG0103390	anti_sense	Q90	NA	Balding measurement,-	NA	ENSG00000232245

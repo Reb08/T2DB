@@ -1,0 +1,2 @@
+Ensembl Gene ID	Gene Symbol	logFC	FDR	Comparison	LncBook ID	Type	Conservation	miRNA	GWAS	nearest PC	Top correlated gene
+ENSG00000289474	ENSG00000289474	8.1906086063848	0.00831955125769386	Diabetic_LPS_vs_Control_LPS	HSALNG0019510	anti_sense	Q50	hsa-miR-4448,hsa-miR-4455	-	MMADHC	ENSG00000236209
